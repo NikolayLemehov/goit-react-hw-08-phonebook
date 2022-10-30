@@ -1,7 +1,7 @@
 import React  from 'react';
 import PropTypes from 'prop-types';
 import s from './ContactItem.module.css';
-import {useDeleteContactByIdMutation} from "../../store/contacts.service";
+import {useDeleteContactByIdMutation} from "../../../store/contacts.service";
 
 function ContactItem({id, name, number}) {
   const [deleteContactById] = useDeleteContactByIdMutation();

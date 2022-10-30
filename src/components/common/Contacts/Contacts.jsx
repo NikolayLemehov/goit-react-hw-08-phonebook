@@ -3,15 +3,18 @@ import s from './Contacts.module.css';
 import InputField from '../InputField';
 import Notification from '../Notification';
 import {useDispatch, useSelector} from "react-redux";
-import {getFilter, setFilterValue} from "../../store/phonebook.slice";
+import {getFilter, setFilterValue} from "../../../store/phonebook.slice";
 import ContactItem from "../ContactItem";
-import {useGetAllContactsQuery} from "../../store/contacts.service";
+import {useGetAllContactsQuery} from "../../../store/contacts.service";
 
 function Contacts() {
   const filter = useSelector(getFilter);
   const dispatch = useDispatch()
 
-  const {data: contacts, error, isLoading} = useGetAllContactsQuery();
+  const {
+    data: contacts,
+    // error, isLoading
+  } = useGetAllContactsQuery();
   const handleInputChange = (e) => {
     dispatch(setFilterValue(e.target.value))
   };

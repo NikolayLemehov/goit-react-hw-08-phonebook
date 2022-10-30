@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import s from './ContactForm.module.css';
 import InputField from '../InputField';
-import {useAddContactItemMutation} from "../../store/contacts.service";
+import {useAddContactItemMutation} from "../../../store/contacts.service";
 
 const initValue = {
   name: '',
