@@ -5,20 +5,16 @@ import Registration from './pages/Registration/Registration';
 import NotFound from './pages/NotFound';
 import LogIn from './pages/LogIn/LogIn';
 import { useDispatch } from 'react-redux';
-// import authSelectors from '../store/auth.selectors';
 import { useEffect } from 'react';
 import authOperations from '../store/auth.operations';
 import PrivateRoute from './common/PrivateRoute/PrivateRoute';
 import About from './pages/About/About';
-// import PrivateRoute from './common/PrivateRoute/PrivateRoute';
 
 export default function App() {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <>
       <Header />

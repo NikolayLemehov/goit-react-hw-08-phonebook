@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux";
 import {useState} from "react";
 import {capitalizeFirstLetter} from "../../../utils/utils";
 import authOperations from "../../../store/auth.operations";
+import { useLocation } from 'react-router-dom';
 
 const initFields = {
   name: '',

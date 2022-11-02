@@ -5,7 +5,6 @@ import authSelectors from '../../../store/auth.selectors';
 export default function PrivateRoute({ children, redirectTo }) {
   const location = useLocation();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  console.log('P', isLoggedIn, location)
   return isLoggedIn
     ? children
     : (

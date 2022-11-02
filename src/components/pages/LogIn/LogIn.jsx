@@ -1,13 +1,14 @@
 import LogInView from "../../common/LogInView/LogInView";
 import Section from "../../common/Section";
-// import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export default function LogIn(props) {
+const location = useLocation();
+  const navigateTo = location.state.from.pathname
 
-  // console.log('LogIn', useLocation())
   return (
     <Section title='LogIn'>
-      <LogInView/>
+      <LogInView navigateTo={navigateTo}/>
     </Section>
   );
 }

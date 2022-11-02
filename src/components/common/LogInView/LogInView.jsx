@@ -11,14 +11,11 @@ const initFields = {
   password: '',
 }
 
-export default function LogInView() {
+export default function LogInView({navigateTo = '/'}) {
   const dispatch = useDispatch();
   const [fields, setFields] = useState(initFields);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const location = useLocation();
   const navigation = useNavigate();
-  const navigateTo = location?.state?.host || '/';
-  console.log(navigateTo)
 
   const onInputChange = ({target: {name, value}}) => {
     setFields(prev => ({...prev, [name]: value}))
