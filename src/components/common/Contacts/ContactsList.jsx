@@ -1,20 +1,28 @@
-import React  from 'react';
-import s from './Contacts.module.css';
+import React, { useEffect } from 'react';
+import s from './ContactsList.module.css';
 import InputField from '../InputField';
 import Notification from '../Notification';
 import {useDispatch, useSelector} from "react-redux";
 import {getFilter, setFilterValue} from "../../../store/phonebook.slice";
 import ContactItem from "../ContactItem";
 import {useGetAllContactsQuery} from "../../../store/contacts.service";
+import authSelectors from '../../../store/auth.selectors';
 
-function Contacts() {
+function ContactsList() {
   const filter = useSelector(getFilter);
   const dispatch = useDispatch()
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const {
     data: contacts,
     // error, isLoading
+    refetch
   } = useGetAllContactsQuery();
+
+  useEffect(() => {
+    if (isLoggedIn) refetch()
+  }, [isLoggedIn, refetch])
+
   const handleInputChange = (e) => {
     dispatch(setFilterValue(e.target.value))
   };
@@ -42,4 +50,4 @@ function Contacts() {
   );
 }
 
-export default Contacts;
+export default ContactsList;

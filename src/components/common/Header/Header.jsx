@@ -5,10 +5,14 @@ import authSelectors from "../../../store/auth.selectors";
 import authOperations from "../../../store/auth.operations";
 import {NavLink} from "react-router-dom";
 
-export default function Header(props) {
+export default function Header() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn)
-  const userName = useSelector(authSelectors.getUserName)
+  // const userName = useSelector(authSelectors.getUserName)
+  const userEmail = useSelector(authSelectors.getUserEmail)
+  const onClickLogOut = () => {
+    dispatch(authOperations.logOut())
+  }
 
   return (
     <header className={s.container}>
@@ -19,6 +23,9 @@ export default function Header(props) {
             <NavLink to="/" className={s.userBtn}>
               Home
             </NavLink>
+            <NavLink to="/contacts" className={s.userBtn}>
+              Contacts
+            </NavLink>
             <NavLink to="/about" className={s.userBtn}>
               About
             </NavLink>
@@ -26,9 +33,9 @@ export default function Header(props) {
 
           {isLoggedIn ? (
             <div>
-              Welcome, {userName} <button
+              Welcome, {userEmail} <button
               className={s.userBtn}
-              onClick={() => dispatch(authOperations.logOut())}
+              onClick={onClickLogOut}
             >Logout</button>
             </div>
           ) : (
