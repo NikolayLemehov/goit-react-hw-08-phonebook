@@ -23,9 +23,11 @@ export default function Header() {
             <NavLink to="/" className={s.userBtn}>
               Home
             </NavLink>
-            <NavLink to="/contacts" className={s.userBtn}>
-              Contacts
-            </NavLink>
+            {isLoggedIn && (
+              <NavLink to="/contacts" className={s.userBtn}>
+                Contacts
+              </NavLink>
+            )}
             <NavLink to="/about" className={s.userBtn}>
               About
             </NavLink>
